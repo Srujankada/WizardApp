@@ -1,0 +1,33 @@
+<div class="container">
+    <div>
+        <div>
+            <hr>
+            <!-- the links to our nested states using relative paths -->
+            <!-- add the active class if the state matches our ui-sref -->
+            <div id="status-buttons" class="text-center">
+                <a type="button" class="btn btn-primary btn-lg" routerLink="/multistep/step1" routerLinkActive="active">Step 1</a>
+                <a type="button" class="btn btn-primary btn-lg" routerLink="/multistep/step2" routerLinkActive="active">Step 2</a>
+                <a type="button" class="btn btn-primary btn-lg" routerLink="/multistep/step3" routerLinkActive="active">Step 3</a>
+                <a type="button" class="btn btn-primary btn-lg" routerLink="/multistep/step4" routerLinkActive="active">Step 4</a>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <hr>
+            <router-outlet></router-outlet>
+            <hr>
+        </div>
+
+        <div>
+            <button (click)="goToNextStep('backward')" [disabled]="!state.isValid || stepIsFirstOrLast('backward')" class="btn btn-primary btn-lg"> Back </button>
+            <button (click)="goToNextStep('forward')" [disabled]="!state.isValid || stepIsFirstOrLast('forward')" class="btn btn-primary btn-lg"> {{GetForwardLable()}} </button>
+        </div>
+    </div>
+
+    <pre>
+            {{state | json}}
+        </pre>
+
+
+  
+</div>

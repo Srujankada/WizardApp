@@ -1,0 +1,34 @@
+<h1 class="ui header">
+  STEP 4 FORM
+  <div class="sub header">
+  </div>
+</h1>
+<form class="ui form" #form="ngForm">
+ 
+  <div class="form-group">
+    <label for="name">payment Method</label>    
+    <input type="text" id="paymentMethod" class="form-control" required name="name" [(ngModel)]="model.paymentMethod"
+      #paymentMethod="ngModel">
+    <div *ngIf="paymentMethod.errors && (paymentMethod.dirty || paymentMethod.touched)" class="alert alert-danger">
+      <div [hidden]="!paymentMethod.errors.required">
+        paymentMethod is required
+      </div>
+      <div [hidden]="!paymentMethod.errors.minlength">
+        paymentMethod must be at least 4 characters long.
+      </div>
+      <div [hidden]="!paymentMethod.errors.maxlength">
+        paymentMethod cannot be more than 24 characters long.
+      </div>
+    </div>
+  </div>
+
+  <pre>
+      {{ model | json }}
+   </pre>
+
+   <pre>
+      {{ form.value | json }}
+   </pre>
+   <!--Large modal-->
+
+</form>
